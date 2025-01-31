@@ -13,10 +13,3 @@ techniques to life through an intuitive graphical interface. Features include:
 
 Perfect for understanding pathfinding algorithms in a practical, engaging context.
 
-The revised version:
-1. Adds a clear title
-2. Provides more specific details about the visualization aspect
-3. Emphasizes the educational value while maintaining the fun aspect
-4. Includes a brief feature list
-5. Uses more dynamic language to engage readers
-
