@@ -55,6 +55,33 @@ class Line:
         )
 
 
+class Cell:
+    def __init__(
+        self, win, has_left_wall=True, has_right_wall=True, has_top_wall=True, has_bottom_wall=True
+    ):
+        self.has_left_wall = has_left_wall
+        self.has_right_wall = has_right_wall
+        self.has_top_wall = has_top_wall
+        self.has_bottom_wall = has_bottom_wall
+        self._top_left = Point(0, 0)
+        self._bottom_right = Point(0, 0)
+        self._win = win
+
+    def draw(self, top_left, bottom_right):
+        self._top_left = top_left
+        self._bottom_right = bottom_right
+        top_right = Point(bottom_right.x, top_left.y)
+        bottom_left = Point(top_left.x, bottom_right.y)
+        if self.has_left_wall:
+            self._win.draw_line(top_left, bottom_left)
+        if self.has_right_wall:
+            self._win.draw_line(top_right, bottom_right)
+        if self.has_top_wall:
+            self._win.draw_line(top_left, top_right)
+        if self.has_bottom_wall:
+            self._win.draw_line(bottom_left, bottom_right)
+
+
 def main():
     p1 = Point(42, 69)
     p2 = Point(42, 10)
