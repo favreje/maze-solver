@@ -5,6 +5,7 @@ class Window:
     def __init__(self, width, height):
         self.__root = Tk()
         self.__root.title("Maze Solver")
+        self.__root.geometry(f"{width}x{height}+450+35")
         self.__canvas = Canvas(master=self.__root, height=height, width=width)
         self.__canvas.pack(fill=BOTH, expand=1)
         self.__is_running = False
@@ -57,29 +58,40 @@ class Line:
 
 class Cell:
     def __init__(
-        self, win, has_left_wall=True, has_right_wall=True, has_top_wall=True, has_bottom_wall=True
+        self,
+        win,
+        has_top_wall=True,
+        has_right_wall=True,
+        has_bottom_wall=True,
+        has_left_wall=True,
     ):
         self.has_left_wall = has_left_wall
         self.has_right_wall = has_right_wall
         self.has_top_wall = has_top_wall
         self.has_bottom_wall = has_bottom_wall
-        self._top_left = Point(0, 0)
-        self._bottom_right = Point(0, 0)
+        self._x1 = 0
+        self._y1 = 0
+        self._x2 = 0
+        self._y2 = 0
         self._win = win
 
-    def draw(self, top_left, bottom_right):
-        self._top_left = top_left
-        self._bottom_right = bottom_right
-        top_right = Point(bottom_right.x, top_left.y)
-        bottom_left = Point(top_left.x, bottom_right.y)
+    def draw(self, x1, y1, x2, y2):
+        self._x1 = x1
+        self._y1 = y1
+        self._x2 = x2
+        self._y2 = y2
+
         if self.has_left_wall:
-            self._win.draw_line(top_left, bottom_left)
+            self._win.draw_line(Line(Point(x1, y1), Point(x1, y2)))
         if self.has_right_wall:
-            self._win.draw_line(top_right, bottom_right)
+            self._win.draw_line(Line(Point(x2, y1), Point(x2, y2)))
         if self.has_top_wall:
-            self._win.draw_line(top_left, top_right)
+            self._win.draw_line(Line(Point(x1, y1), Point(x2, y1)))
         if self.has_bottom_wall:
-            self._win.draw_line(bottom_left, bottom_right)
+            self._win.draw_line(Line(Point(x1, y2), Point(x2, y2)))
+
+    def draw_move(self, to_cell, undo=False):
+        pass
 
 
 def main():
