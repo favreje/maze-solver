@@ -80,7 +80,6 @@ class Cell:
         self._y1 = y1
         self._x2 = x2
         self._y2 = y2
-
         if self.has_left_wall:
             self._win.draw_line(Line(Point(x1, y1), Point(x1, y2)))
         if self.has_right_wall:
@@ -91,7 +90,14 @@ class Cell:
             self._win.draw_line(Line(Point(x1, y2), Point(x2, y2)))
 
     def draw_move(self, to_cell, undo=False):
-        pass
+        if undo:
+            fill_color = "grey"
+        else:
+            fill_color = "red"
+        start = Point((self._x2 - self._x1) // 2, (self._y2 - self._y1) // 2)
+        end = Point((to_cell._x2 - to_cell._x1) // 2, (to_cell._y2 - to_cell._y1) // 2)
+        self._win.draw_line(Line(start, end), fill_color)
+        print(start, end)
 
 
 def main():
