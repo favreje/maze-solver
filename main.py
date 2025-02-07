@@ -5,7 +5,8 @@
 # Description:  Builds and then solves a maze using tkinter
 # --------------------------------------------------------------------------------------------------
 
-from window import Window, Maze
+from window import Window
+from maze import Maze
 
 
 def main():
