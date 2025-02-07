@@ -5,13 +5,12 @@
 # Description:  Builds and then solves a maze using tkinter
 # --------------------------------------------------------------------------------------------------
 
-from window import Window, Line, Point, Cell, Maze
+from window import Window, Maze
 
 
 def main():
     win = Window(1100, 1075)
     m = Maze(50, 40, 20, 20, 50, 50, win)
-    m._create_cells()
     win.wait_for_close()
 
 
