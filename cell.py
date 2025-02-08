@@ -25,14 +25,23 @@ class Cell:
         self._y1 = y1
         self._x2 = x2
         self._y2 = y2
+        erase_color = "#eae9e8"
         if self.has_left_wall:
             self._win.draw_line(Line(Point(x1, y1), Point(x1, y2)))
+        else:
+            self._win.draw_line(Line(Point(x1, y1), Point(x1, y2)), fill_color=erase_color)
         if self.has_right_wall:
             self._win.draw_line(Line(Point(x2, y1), Point(x2, y2)))
+        else:
+            self._win.draw_line(Line(Point(x2, y1), Point(x2, y2)), fill_color=erase_color)
         if self.has_top_wall:
             self._win.draw_line(Line(Point(x1, y1), Point(x2, y1)))
+        else:
+            self._win.draw_line(Line(Point(x1, y1), Point(x2, y1)), fill_color=erase_color)
         if self.has_bottom_wall:
             self._win.draw_line(Line(Point(x1, y2), Point(x2, y2)))
+        else:
+            self._win.draw_line(Line(Point(x1, y2), Point(x2, y2)), fill_color=erase_color)
 
     def draw_move(self, to_cell, undo=False):
         if undo:

@@ -11,7 +11,7 @@ from maze import Maze
 
 def main():
     win = Window(1100, 1075)
-    m = Maze(50, 40, 20, 20, 50, 50, win)
+    m = Maze(50, 40, 3, 8, 50, 50, win)
     win.wait_for_close()
 
 
