@@ -46,9 +46,9 @@ class Cell:
 
     def draw_move(self, to_cell, undo=False):
         if undo:
-            fill_color = "grey"
+            fill_color = "lightblue"
         else:
-            fill_color = "red"
+            fill_color = "blue"
         start_mid_x = abs(self._x2 - self._x1) // 2
         start_mid_y = abs(self._y2 - self._y1) // 2
         end_mid_x = abs(to_cell._x2 - to_cell._x1) // 2

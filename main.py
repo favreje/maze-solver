@@ -12,6 +12,8 @@ from maze import Maze
 def main():
     win = Window(1100, 1075)
     m = Maze(50, 40, 20, 20, 50, 50, win)
+    m.solve()
+    print("The maze has been solved!")
     win.wait_for_close()
 
 
