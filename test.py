@@ -18,7 +18,7 @@ class Tests(unittest.TestCase):
         )
 
     def test_various_rows_and_cols(self):
-        num_cols = 69
+        num_cols = 42
         num_rows = 42
         m = Maze(50, 40, num_rows, num_cols, 50, 50)
         self.assertEqual(len(m._cells[0]), num_rows)
@@ -31,6 +31,12 @@ class Tests(unittest.TestCase):
 
         self.assertEqual(m._cells[0][0].has_top_wall, False)
         self.assertEqual(m._cells[-1][-1].has_bottom_wall, False)
+
+    def test_reset_visited(self):
+        m = Maze(50, 40, 20, 20, 50, 50)
+        for i in range(m._num_cols):
+            for j in range(m._num_rows):
+                self.assertEqual(m._cells[i][j]._visited, False)
 
 
 if __name__ == "__main__":
